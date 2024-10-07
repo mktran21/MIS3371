@@ -1,0 +1,176 @@
+/* Program name: Medical_Form.css
+Author: Maryann Tran
+Date created: 9/9
+Date last edited: The date you submitted it
+Version: 1.0 */
+
+/* body of the page */
+body {
+  background-color: #e7c5c5;
+  margin: 0;
+  font-family: system-ui;
+}
+
+/* edits the banner on top of the page */
+.banner {
+  display: flex;
+  flex-direction: row;
+  background-color: #1c2f5a;
+  height: 11vh;
+  justify-content: center;
+  border-radius: 0 0 20px 20px;
+  font-family: sans-serif;
+  font-variant: small-caps;
+  font-weight: 500;
+  margin-bottom: 5vh;
+}
+
+/* edits the structure of the banner */
+.banner .banner-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* making the h2 banner  */
+.banner h2 {
+  color: white;
+  padding-left: 10px;
+  margin: 0;
+}
+
+/* styling banner image aka logo */
+.banner img {
+  width: 10vh;
+  height: 10vh;
+}
+
+/* styling datetime inside the banner */
+.banner .banner-col .displayDateTime h5 {
+  font-family: system-ui;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+/* outer form to make the form go into the center page */
+.outerForm {
+  display: flex;
+  justify-content: center;
+}
+
+/* wraps around the form */
+.medicalForm {
+  display: flex;
+  justify-content: center;
+  background-color: #9eccee;
+  padding-bottom: 1vh;
+  border-radius: 20px;
+  width: 50vw;
+}
+
+/* styling the input boxes in the medical form */
+.medicalForm input {
+  border-radius: 20px;
+  border: 0px;
+  padding: 10px;
+}
+
+/* styling email input  */
+.medicalForm input.email {
+  width: 100%;
+}
+
+/* styling address input */
+.medicalForm input.address {
+  width: 100%;
+}
+
+/* styling phone number input  */
+.medicalForm input.phoneNumber {
+  width: 100%;
+}
+
+/* styling the form itself */
+form {
+  width: 100%;
+  font-family: system-ui;
+}
+
+/* edits the table within the form */
+table {
+  margin: 0 1vw 1vh 1vw;
+  display: flex;
+  justify-content: center;
+}
+
+/* edits some p tags within the form */
+p {
+  margin: 0 1vw 1vh 1vw;
+  display: flex;
+  justify-content: center;
+  font-family: system-ui;
+}
+
+/* styling user text area */
+textarea {
+  border-radius: 20px;
+  padding: 10px;
+}
+
+/* separates information  */
+.separator {
+  background-color: #1c2f5a;
+  border-radius: 10px;
+  margin-bottom: 2vh;
+}
+
+/* styling text inside the serparator div */
+.separator h2 {
+  color: white;
+  padding: 1vh 0 1vh 1vw;
+  margin: 0;
+}
+
+/* submit and reset buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding-top: 2vh;
+}
+
+/* maing the text inside the buttons not stick to the sides */
+.buttons input {
+  margin: 1rem;
+}
+
+/* styling the footer */
+.footer {
+  background-color: #1c2f5a;
+  font-family: system-ui;
+}
+
+/* styling the content of the footer header div */
+.footerHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: white;
+}
+
+/* styling the content of the footer details div */
+.footerDetails {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 30px;
+  text-align: center;
+}
+
+/* social media icons */
+.footerDetails a {
+  color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+}
