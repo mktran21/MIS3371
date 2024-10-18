@@ -99,6 +99,14 @@ function inputValidator() {
     return false
   }
 
+  var selectedState = document.getElementById('selectState').value
+
+  // Check if the user has selected the placeholder option
+  if (selectedState === 'XX') {
+    alert('Please select a valid state.')
+    return false
+  }
+
   return true
 }
 
