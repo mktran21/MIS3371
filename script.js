@@ -15,23 +15,35 @@ function getData() {
     dataType = formContents.elements[i].type
     console.log(dataType)
     // switch case for different types of data
-    if (formContents.elements[i].name == 'email') {
-      formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
-      formOutput += '<td>' + dataType + '</td>'
-      formOutput +=
-        "<td class='outputdata'>" +
-        formContents.elements[i].value.toLowerCase() +
-        '</td></tr>'
-    }
-    if (formContents.elements[i].name == 'username') {
-      formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
-      formOutput += '<td>' + dataType + '</td>'
-      formOutput +=
-        "<td class='outputdata'>" +
-        formContents.elements[i].value.toLowerCase() +
-        '</td></tr>'
-    }
+
     switch (dataType) {
+      case 'text':
+        if (formContents.elements[i].name == 'username') {
+          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
+          formOutput += '<td>' + dataType + '</td>'
+          formOutput +=
+            "<td class='outputdata'>" +
+            formContents.elements[i].value.toLowerCase() +
+            '</td></tr>'
+        } else {
+          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
+          formOutput += '<td>' + dataType + '</td>'
+          formOutput +=
+            "<td class='outputdata'>" +
+            formContents.elements[i].value +
+            '</td></tr>'
+        }
+        break
+      case 'email':
+        if (formContents.elements[i].name) {
+          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
+          formOutput += '<td>' + dataType + '</td>'
+          formOutput +=
+            "<td class='outputdata'>" +
+            formContents.elements[i].value.toLowerCase() +
+            '</td></tr>'
+        }
+        break
       case 'checkbox':
         if (formContents.elements[i].checked) {
           formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
