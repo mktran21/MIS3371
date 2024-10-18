@@ -15,6 +15,14 @@ function getData() {
     dataType = formContents.elements[i].type;
     console.log(dataType);
     // switch case for different types of data
+    if (formContents.elements[i].name == "email") {
+      formOutput += "<tr><td>" + formContents.elements[i].name + "</td>";
+      formOutput += "<td>" + dataType + "</td>";
+      formOutput +=
+        "<td class='outputdata'>" +
+        formContents.elements[i].value.toLowerCase() +
+        "</td></tr>";
+    }
     if (formContents.elements[i].name == "username") {
       formOutput += "<tr><td>" + formContents.elements[i].name + "</td>";
       formOutput += "<td>" + dataType + "</td>";
