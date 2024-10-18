@@ -174,3 +174,29 @@ textarea {
   display: flex;
   justify-content: space-evenly;
 }
+
+.review {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.reviewTable {
+  display: flex;
+  justify-content: center;
+  background-color: #9eccee;
+  padding-bottom: 1vh;
+  border-radius: 20px;
+  width: 50vw;
+}
+
+.output th {
+  background-color: white;
+  border-radius: 20px;
+}
+.output td {
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  padding: 8px;
+}
