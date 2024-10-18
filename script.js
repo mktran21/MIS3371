@@ -17,33 +17,6 @@ function getData() {
     // switch case for different types of data
 
     switch (dataType) {
-      case 'text':
-        if (formContents.elements[i].name == 'username') {
-          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
-          formOutput += '<td>' + dataType + '</td>'
-          formOutput +=
-            "<td class='outputdata'>" +
-            formContents.elements[i].value.toLowerCase() +
-            '</td></tr>'
-        } else {
-          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
-          formOutput += '<td>' + dataType + '</td>'
-          formOutput +=
-            "<td class='outputdata'>" +
-            formContents.elements[i].value +
-            '</td></tr>'
-        }
-        break
-      case 'email':
-        if (formContents.elements[i].name) {
-          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
-          formOutput += '<td>' + dataType + '</td>'
-          formOutput +=
-            "<td class='outputdata'>" +
-            formContents.elements[i].value.toLowerCase() +
-            '</td></tr>'
-        }
-        break
       case 'checkbox':
         if (formContents.elements[i].checked) {
           formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
@@ -78,12 +51,28 @@ function getData() {
       case 'reset':
         break
       default:
-        formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
-        formOutput += '<td>' + dataType + '</td>'
-        formOutput +=
-          "<td class='outputdata'>" +
-          formContents.elements[i].value +
-          '</td></tr>'
+        if (formContents.elements[i].name == 'email') {
+          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
+          formOutput += '<td>' + dataType + '</td>'
+          formOutput +=
+            "<td class='outputdata'>" +
+            formContents.elements[i].value.toLowerCase() +
+            '</td></tr>'
+        } else if (formContents.elements[i].name == 'username') {
+          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
+          formOutput += '<td>' + dataType + '</td>'
+          formOutput +=
+            "<td class='outputdata'>" +
+            formContents.elements[i].value.toLowerCase() +
+            '</td></tr>'
+        } else {
+          formOutput += '<tr><td>' + formContents.elements[i].name + '</td>'
+          formOutput += '<td>' + dataType + '</td>'
+          formOutput +=
+            "<td class='outputdata'>" +
+            formContents.elements[i].value +
+            '</td></tr>'
+        }
     }
   }
 
