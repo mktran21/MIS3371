@@ -4,14 +4,9 @@ Date created: 9/9
 Date last edited: 10/2
 Version: 1.0 -->
 
-<!-- TODO:
-
-* Text box for a desired user ID
-Advanced Editing:
-1. 5 to 30 characters.
-2. No special characters allowed. just letters, numbers (as long as the first character is NOT a number), and an underscore or dash and
-3. NO SPACES.
-4. Allow entry of lower or uppercase but convert it to lowercase AND redisplay the corrected lowercase version on submit.
+<!-- TODO delete this later:
+REPLACE the traditional Submit button with a VALIDATE button which will call javascript functions to do the following:
+The submit button will load a NEW html page that says: Thank you for your submission. We will be contacting you shortly.
  -->
 
 <!DOCTYPE html>
@@ -216,8 +211,8 @@ Advanced Editing:
                 <input
                   type="text"
                   class="address"
-                  id="address"
-                  name="address"
+                  id="address1"
+                  name="address1"
                   maxlength="30"
                   placeholder="Enter Address Line 1"
                   required
@@ -486,11 +481,13 @@ Advanced Editing:
               </td>
             </tr>
           </table>
-          <!-- submit and reset buttons -->
+          <!-- validate, review and reset buttons -->
           <div class="buttons">
+            <!-- this will be first validate button -->
             <input
-              type="submit"
-              value="Submit"
+              type="button"
+              value="validate"
+              onclick="validateForm()"
               style="color: white; background-color: #1c2f5a"
             />
             <input
