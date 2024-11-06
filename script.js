@@ -72,7 +72,7 @@ function validateForm() {
   }
 
   if (!address1) {
-    errorMesssage += "Please provide address line";
+    errorMessage += "Please provide address line";
     valid = false;
   }
 
