@@ -46,7 +46,7 @@ function validateForm() {
     let birthdateObj = new Date(birthdate);
     let today = new Date();
     if (birthdateObj >= today) {
-      errorMsg += "Birthdate must be a past date.\n";
+      errorMessage += "Birthdate must be a past date.\n";
       valid = false;
     }
   }
