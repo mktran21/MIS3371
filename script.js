@@ -40,7 +40,7 @@ function validateForm() {
 
   // validate birthdate
   if (!birthdate) {
-    errorMsg += "Birthdate is required. \n";
+    errorMessage += "Birthdate is required. \n";
     valid = false;
   } else {
     let birthdateObj = new Date(birthdate);
