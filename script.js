@@ -6,7 +6,7 @@
 
 //this function checks the entire form and will display submit button if form is valid
 function validateForm() {
-  let formData = document.forms["medicalForm"];
+  let form = document.forms["medicalForm"];
   let valid = true;
   let errorMessage = "";
 
