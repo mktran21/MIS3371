@@ -117,7 +117,7 @@ function validateForm() {
       form.querySelector(".buttons").appendChild(submitButton);
     }
   } else {
-    alert(errorMsg);
+    alert(errorMessage);
   }
 }
 
