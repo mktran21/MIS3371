@@ -121,6 +121,157 @@ function validateForm() {
   }
 }
 
+//validate first name
+function validateFname() {
+  let fname = document.getElementById("fname");
+  let error = document.getElementById("fnameError");
+
+  let fnamePattern = /^[a-zA-Z](?:[ '.\-a-zA-Z]{0,28}[a-zA-Z])?$/;
+
+  // check if there's any input and if it matches pattern
+  if (!fname.value) {
+    error.textContent = "First name is required.";
+  } else if (!fnamePattern.test(fname.value)) {
+    error.textContent =
+      "First name must only contain letters, apostrophes, and dashes only!";
+  } else {
+    error.textContent = "";
+  }
+}
+
+//validate last name
+function validateLname() {
+  let lname = document.getElementById("lname");
+  let error = document.getElementById("lnameError");
+
+  let lnamePattern = /^[A-Za-z2-5\-_]{1,30}$/;
+
+  // check if there's any input and if it matches pattern
+  if (!lname.value) {
+    error.textContent = "Last name is required.";
+  } else if (!lnamePattern.test(lname.value)) {
+    error.textContent =
+      "Last name must only contain letters, apostrophes, and dashes only!";
+  } else {
+    error.textContent = "";
+  }
+}
+
+//preformatting ssn
+document.getElementById("ssn").addEventListener("input", function (event) {
+  let ssnInput = event.target;
+  let ssnValue = ssnInput.value.replace(/\D/g, "");
+  let formattedSSN = "";
+
+  // Format the SSN as XXX-XX-XXXX
+  if (ssnValue.length <= 3) {
+    formattedSSN = ssnValue;
+  } else if (ssnValue.length <= 5) {
+    formattedSSN = `${ssnValue.slice(0, 3)}-${ssnValue.slice(3)}`;
+  } else {
+    formattedSSN = `${ssnValue.slice(0, 3)}-${ssnValue.slice(
+      3,
+      5
+    )}-${ssnValue.slice(5, 9)}`;
+  }
+
+  ssnInput.value = formattedSSN;
+});
+
+function validateSSN() {
+  let ssn = document.getElementById("ssn").value;
+  let error = document.getElementById("ssnError");
+
+  // Check if SSN matches the 9-digit format with dashes
+  let ssnPattern =
+    /^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$|^(?!(000|666|9))\d{3}(?!00)\d{2}(?!0000)\d{4}$/;
+
+  if (!ssnPattern.test(ssn)) {
+    error.textContent = "SSN must be 9 digits in the format XXX-XX-XXXX.";
+  } else {
+    error.textContent = "";
+  }
+}
+
+//validate email
+function validateEmail() {
+  let email = document.getElementById("email");
+  email.value = email.value.toLowerCase();
+  let error = document.getElementById("emailError");
+
+  let emailPattern = /^[^@]+@[^@]+\.[^@]+$/;
+
+  // check if there's any input and if it matches pattern
+  if (!email.value) {
+    error.textContent = "Email is required.";
+  } else if (!emailPattern.test(email.value)) {
+    error.textContent = "Must be a valid email";
+  } else {
+    error.textContent = "";
+  }
+}
+
+//preformat phone and validate phone #
+
+document
+  .getElementById("phoneNumber")
+  .addEventListener("input", function (event) {
+    let phoneInput = event.target;
+    let phoneValue = phoneInput.value.replace(/\D/g, ""); // Remove all non-digit characters
+    let formattedPhone = "";
+
+    // Format phone number as (XXX) XXX-XXXX
+    if (phoneValue.length <= 3) {
+      formattedPhone = phoneValue;
+    } else if (phoneValue.length <= 6) {
+      formattedPhone = `${phoneValue.slice(0, 3)}-${phoneValue.slice(3)}`;
+    } else {
+      formattedPhone = `${phoneValue.slice(0, 3)}-${phoneValue.slice(
+        3,
+        6
+      )}-${phoneValue.slice(6, 10)}`;
+    }
+
+    phoneInput.value = formattedPhone;
+  });
+
+function validatePhone() {
+  let phone = document.getElementById("phoneNumber").value;
+  let error = document.getElementById("phoneError");
+
+  let phonePattern = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+
+  if (!phonePattern.test(phone)) {
+    error.textContent =
+      "Phone number must be in the format XXX-XXX-XXXX and contain exactly 10 digits.";
+  } else {
+    error.textContent = ""; // Clear the error if phone number is valid
+  }
+}
+
+//validate address line 1
+function validateAddressLine1() {
+  let address1 = document.getElementById("address1").value;
+  let error = document.getElementById("addressError");
+
+  if (address1.length < 2 || address1.length > 30) {
+    error.textContent = "Address must be between 2 and 30 characters";
+  } else {
+    error.textContent = "";
+  }
+}
+
+//validate city
+function validateCity() {
+  let city = document.getElementById("city").value;
+  let error = document.getElementById("cityError");
+
+  if (city.length < 2 || city.length > 30) {
+    error.textContent = "City must be between 2 and 30 characters";
+  } else {
+    error.textContent = "";
+  }
+}
 // this function outputs user inputted data
 function getData() {
   var formContents = document.getElementById("medicalForm");

@@ -65,8 +65,10 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   pattern="^[a-zA-Z](?:[ '.\-a-zA-Z]*[a-zA-Z])?$"
                   maxlength="30"
                   placeholder="Enter First Name"
+                  onblur="validateFname()"
                   required
                 />
+                <span id="fnameError" style="color: red;"></span>
               </td>
               <td colspan="1">
                 <!-- middle initial -->
@@ -92,8 +94,10 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   pattern="([A-Za-z2-5\-\_]+)"
                   maxlength="30"
                   placeholder="Enter Last Name"
+                  onblur="validateLname()"
                   required
                 />
+                <span id="lnameError" style="color: red;"></span>
               </td>
 
               <!-- user DOB & gender -->
@@ -164,9 +168,10 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   name="ssn"
                   title = "Please use ###-##-#### pattern."
                   pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$|^(?!(000|666|9))\d{3}(?!00)\d{2}(?!0000)\d{4}$"
-                  placeholder="Enter Social Security #"
+                  placeholder="Enter Social Security # (e.g., 123-45-6789)"
                   required
                 />
+                <span id="ssnError" style="color: red;"></span>
               </td>
               <td colspan="2">
                 <label for="email">Email: <i style="color: red">*</i></label
@@ -179,6 +184,7 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   title="Format email like name@domain.tld"
                   pattern="^[^@]+@[^@]+\.[^@]+$"
                   placeholder="Enter Email"
+                  onblur="validateEmail()"
                   required
                 />
               </td>
@@ -195,11 +201,11 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   id="phoneNumber"
                   name="phoneNumber"
                   title="Format like 000-000-0000"
-                  pattern="^[1-9]\d{2}-\d{3}-\d{4}"
                   placeholder="xxx-xxx-xxxx"
                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   required
                 />
+                <span id="phoneError" style="color: red;"></span>
               </td>
             </tr>
             <!-- address line 1 -->
@@ -213,10 +219,13 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   class="address"
                   id="address1"
                   name="address1"
+                  minlength="2"
                   maxlength="30"
                   placeholder="Enter Address Line 1"
+                  onblur="validateAddressLine1()"
                   required
                 />
+                <span id="addressError" style="color: red;"></span>
               </td>
             </tr>
             <!-- address line 2 -->
@@ -244,8 +253,10 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   name="city"
                   maxlength="30"
                   placeholder="Enter City"
+                  onblur="validateCity()"
                   required
                 />
+                <span id="cityError" style="color: red;"></span>
               </td>
               <td>
                 <label for="city">State: <i style="color: red">*</i></label
