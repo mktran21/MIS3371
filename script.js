@@ -453,7 +453,7 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordErrorMessage.textContent = "";
     }
 
-    if (passwordField.value < 8) {
+    if (passwordField.value.length < 8) {
       passwordErrorMessage.textContent =
         "Password should be at least 8 characters long";
     } else if (!passwordFieldPattern.test(passwordField)) {
