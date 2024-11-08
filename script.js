@@ -60,37 +60,37 @@ function validateForm() {
     errorMessage += "Please Provide a valid SSN\n";
     valid = false;
   }
-
+  //validate phone number
   if (!/[0-9]{3}-[0-9]{3}-[0-9]{4}/.test(phoneNumber)) {
     errorMessage += "Please provide valid phone number";
     valid = false;
   }
-
+  //validate email
   if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
     errorMessage += "Please provide valid email";
     valid = false;
   }
-
-  if (!address1) {
-    errorMessage += "Please provide address line";
+  //validate address line 1
+  if (address1.length < 2 || address1.length > 30) {
+    errorMessage += "Please provide address line within 2 to 30 characters";
     valid = false;
   }
-
-  if (!city) {
-    errorMessage += "Please provide city";
+  //validate city
+  if (city.length < 2 || city.length > 30) {
+    errorMessage += "Please provide city within 2 to 30 characters";
     valid = false;
   }
-
-  if (!zipcode) {
-    errorMessage += "Please provide zipcode";
+  //validate zipcode
+  if (zipcode.length != 5) {
+    errorMessage += "Please provide zipcode 5 digits only";
     valid = false;
   }
-
+  //validate username
   if (!/^([a-zA-Z]+)([0-9_-]*){3,15}$/.test(username)) {
     errorMessage += "Please provide valid username";
     valid = false;
   }
-
+  //validate password
   if (
     !/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#%^&*()-_+=\/><.,`~])[A-Za-z\d!@#%^&*()-_+=\/><.,`~]{8,30}$/.test(
       password
@@ -100,7 +100,12 @@ function validateForm() {
       "Please provide password that doesn't contain username, at least 1 upper case, 1 lower case, and 1 digit";
     valid = false;
   }
-
+  //check if password includes username
+  if (password.includes(username)) {
+    errorMessage += "Password should not include username";
+    valid = false;
+  }
+  //check if retyped password equals password
   if (retypePassword != password) {
     errorMessage += "Please make sure your passwords are matching!";
     valid = false;
@@ -108,7 +113,9 @@ function validateForm() {
 
   //if everything is correct
   if (valid) {
+    // if there's no submit button
     if (!form.querySelector("input[type='submit']")) {
+      // creating new submit button
       let submitButton = document.createElement("input");
       submitButton.type = "submit";
       submitButton.value = "Submit";
