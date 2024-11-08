@@ -164,6 +164,7 @@ Version: 1.0 -->
                   title = "Please use ###-##-#### pattern."
                   pattern="^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$|^(?!(000|666|9))\d{3}(?!00)\d{2}(?!0000)\d{4}$"
                   placeholder="Enter Social Security # (e.g., 123-45-6789)"
+                  onblur="validateSSN()"
                   required
                 />
                 <span id="ssnError" style="color: red;"></span>
@@ -199,6 +200,7 @@ Version: 1.0 -->
                   title="Format like 000-000-0000"
                   placeholder="xxx-xxx-xxxx"
                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  onblur="validatePhone()"
                   required
                 />
                 <span id="phoneError" style="color: red;"></span>
@@ -463,7 +465,7 @@ Version: 1.0 -->
                   id="password"
                   name="password"
                   title="Password should not contain username. Should contain 1 upper case 1 number and 1 special character such as !@#$%^&*()-_+=\/.,`~"
-                  pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#%^&*()-_+=\/><.,`~])[A-Za-z\d!@#%^&*()-_+=\/><.,`~]{8,30}$"
+                  pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#%^&*()\-_=+\/><.,`~])[A-Za-z\d!@#%^&*()\-_=+\/><.,`~]{8,30}$"
                   minlength="8"
                   maxlength="30"
                   placeholder="Enter Desired Password"

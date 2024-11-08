@@ -431,7 +431,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const usernameField = document.getElementById("username");
   const passwordField = document.getElementById("password");
   const retypePasswordField = document.getElementById("retypePassword");
-
+  const passwordFieldPattern =
+    "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#%^&*()-_=+/><.,`~])[A-Za-zd!@#%^&*()-_=+/><.,`~]{8,30}$";
   const passwordErrorMessage = document.getElementById("passwordErrorMessage");
   const retypePasswordErrorMessage = document.getElementById(
     "retypePasswordErrorMessage"
@@ -448,6 +449,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (passwordField.value.includes(usernameField.value)) {
       passwordErrorMessage.textContent =
         "Password should not contain username!";
+    } else {
+      passwordErrorMessage.textContent = "";
+    }
+
+    if (passwordField.value < 8) {
+      passwordErrorMessage.textContent =
+        "Password should be at least 8 characters long";
+    } else if (!passwordFieldPattern.test(passwordField)) {
+      passwordErrorMessage.textContent =
+        "Password sohould contain at least 1 upper case, 1 lower case and 1 digit";
     } else {
       passwordErrorMessage.textContent = "";
     }
