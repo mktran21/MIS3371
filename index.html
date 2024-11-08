@@ -1,13 +1,8 @@
 <!-- Program name: Medical_Form.html
 Author: Maryann Tran
 Date created: 9/9
-Date last edited: 10/2
+Date last edited: 11/7
 Version: 1.0 -->
-
-<!-- TODO delete this later:
-REPLACE the traditional Submit button with a VALIDATE button which will call javascript functions to do the following:
-The submit button will load a NEW html page that says: Thank you for your submission. We will be contacting you shortly.
- -->
 
 <!DOCTYPE html>
 <html>
@@ -187,6 +182,7 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   onblur="validateEmail()"
                   required
                 />
+                <span id="emailError" style="color:red;"></span>
               </td>
             </tr>
             <!-- phone number -->
@@ -323,10 +319,13 @@ The submit button will load a NEW html page that says: Thank you for your submis
                   type="text"
                   id="zipcode"
                   name="zipcode"
-                  maxlength="10"
+                  minlength="1"
+                  maxlength="5"
                   placeholder="Enter Zipcode"
+                  onblur="validateZipcode()"
                   required
                 />
+                <span id="zipcodeError" style="color:red;"></span>
               </td>
             </tr>
           </table>

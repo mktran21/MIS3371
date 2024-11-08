@@ -1,7 +1,7 @@
 // Program name: Medical_Form.js
 // Author: Maryann Tran
 // Date created: 10/2
-// Date last edited: 10/2
+// Date last edited: 11/7
 // Version: 1.0
 
 //this function checks the entire form and will display submit button if form is valid
@@ -123,14 +123,14 @@ function validateForm() {
 
 //validate first name
 function validateFname() {
-  let fname = document.getElementById("fname");
+  let fname = document.getElementById("fname").value;
   let error = document.getElementById("fnameError");
 
   let fnamePattern = /^[a-zA-Z](?:[ '.\-a-zA-Z]{0,28}[a-zA-Z])?$/;
 
   // check if there's any input and if it matches pattern
-  if (!fname.value) {
-    error.textContent = "First name is required.";
+  if (fname.length < 1 || fname.length > 30) {
+    error.textContent = "First name should be 1 to 30 characters.";
   } else if (!fnamePattern.test(fname.value)) {
     error.textContent =
       "First name must only contain letters, apostrophes, and dashes only!";
@@ -141,14 +141,14 @@ function validateFname() {
 
 //validate last name
 function validateLname() {
-  let lname = document.getElementById("lname");
+  let lname = document.getElementById("lname").value;
   let error = document.getElementById("lnameError");
 
   let lnamePattern = /^[A-Za-z2-5\-_]{1,30}$/;
 
   // check if there's any input and if it matches pattern
-  if (!lname.value) {
-    error.textContent = "Last name is required.";
+  if (lname.length < 1 || lname.length > 30) {
+    error.textContent = "Last name should be 1 to 30 characters.";
   } else if (!lnamePattern.test(lname.value)) {
     error.textContent =
       "Last name must only contain letters, apostrophes, and dashes only!";
@@ -272,6 +272,19 @@ function validateCity() {
     error.textContent = "";
   }
 }
+
+//validate zipcode
+function validateZipcode() {
+  let zipcode = document.getElementById("zipcode").value;
+  let error = document.getElementById("cityError");
+
+  if (zipcode.length != 5) {
+    error.textContent = "Zipcode must be 5 digits only";
+  } else {
+    error.textContent = "";
+  }
+}
+
 // this function outputs user inputted data
 function getData() {
   var formContents = document.getElementById("medicalForm");
