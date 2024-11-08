@@ -25,16 +25,16 @@ function validateForm() {
   let retypePassword = form["retypePassword"].value.trim();
 
   // validate first name
-  if (!/^[a-zA-Z](?:[ '.\-a-zA-Z]*[a-zA-Z])?$/.test(fname)) {
+  if (!/^[a-zA-Z](?:[ '.\-a-zA-Z]*[a-zA-Z]){0,29}?$/.test(fname)) {
     errorMessage +=
-      "First Name must be 0-30 characters long and contain only letters!\n";
+      "First Name must be 1-30 characters long and contain only letters!\n";
     valid = false;
   }
 
   // validate last name
-  if (!/([A-Za-z2-5\-\_]+)/.test(lname)) {
+  if (!/^[A-Za-z2-5\-_]{1,30}$/.test(lname)) {
     errorMessage +=
-      "Last Name must be 0-30 characters long and contain only letters, apostrophes and dashes only!\n";
+      "Last Name must be 1-30 characters long and contain only letters, apostrophes and dashes only!\n";
     valid = false;
   }
 
@@ -86,7 +86,7 @@ function validateForm() {
     valid = false;
   }
   //validate username
-  if (!/^([a-zA-Z]+)([0-9_-]*){3,15}$/.test(username)) {
+  if (!/^[a-zA-Z][a-zA-Z0-9_-]{4,18}$/.test(username)) {
     errorMessage += "Please provide valid username";
     valid = false;
   }
