@@ -446,6 +446,7 @@ Version: 1.0 -->
                   minlength="5"
                   maxlength="30"
                   placeholder="Enter Desired Username"
+                  onblur="validateUsername()"
                 />
                 <p id="usernameErrorMessage" style="color: red"></p>
               </td>
@@ -469,6 +470,7 @@ Version: 1.0 -->
                   minlength="8"
                   maxlength="30"
                   placeholder="Enter Desired Password"
+                  onblur="validatePassword()"
                   required
                 />
                 <p id="passwordErrorMessage" style="color: red"></p>

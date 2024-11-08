@@ -285,6 +285,21 @@ function validateZipcode() {
   }
 }
 
+//validate username
+function validateUsername() {
+  let username = document.getElementById("username").value;
+  let error = document.getElementById("usernameErrorMessage");
+  let usernamePattern = /^([a-zA-Z]+)([0-9_-]*){3,15}$/;
+  if (username.length < 5 || username.length > 20) {
+    error.textContent =
+      "User ID must be at least 5 characters but no more than 20 characters.";
+  } else if (!usernamePattern.test(username)) {
+    error.textContent =
+      "User can't have spaces or any special characters in it, just letters, numbers, the dash and underscore";
+  } else {
+    error.textContent = "";
+  }
+}
 // this function outputs user inputted data
 function getData() {
   var formContents = document.getElementById("medicalForm");
