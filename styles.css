@@ -10,7 +10,10 @@ body {
   margin: 0;
   font-family: system-ui;
 }
-
+.welcomeHeading {
+  display: flex;
+  justify-content: center;
+}
 /* edits the banner on top of the page */
 .banner {
   position: sticky;
