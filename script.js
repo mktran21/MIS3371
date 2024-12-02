@@ -6,14 +6,13 @@
 
 //this function checks the entire form and will display submit button if form is valid
 function validateForm() {
-  // save the first name as cookie
-  const firstName = document.getElementById("firstName").value;
-  if (firstName.trim() === "") {
-    alert("Please enter your first name!");
-    return;
+  const firstName = document.getElementById("fname").value;
+  const rememberMe = document.getElementById("rememberMe")?.checked || false;
+  if (rememberMe) {
+    setCookie("fname", firstName, 2); // Cookie expires in 2 days
+  } else {
+    deleteCookie("fname");
   }
-  setCookie("firstName", firstName, 7);
-  alert("Your name has been saved!");
 
   let form = document.forms["medicalForm"];
   let valid = true;
@@ -513,40 +512,55 @@ document.addEventListener("DOMContentLoaded", function () {
   updateHealthValue();
 });
 
-// set the cookie expire time
+// set the cookie expire time = 48 hours
 function setCookie(name, value, days) {
-  const d = newDate();
-  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-  const expires = "expires=" + d.toUTCString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  const expiry = new Date();
+  expiry.setTime(expiry.getTime() + days * 24 * 60 * 60 * 1000); // Calculate expiry in milliseconds
+  document.cookie = `${name}=${encodeURIComponent(
+    value
+  )};expires=${expiry.toUTCString()};path=/`;
 }
 
-// Function to handle page load
-function onPageLoad() {
-  const firstName = getCookie("firstName");
-  const heading = document.getElementById("welcomeHeading");
-  const firstNameInput = document.getElementById("firstName");
+// Delete a cookie
+function deleteCookie(name) {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
+}
+
+// Display welcome message and dynamic checkbox
+function displayWelcomeMessage() {
+  const firstName = getCookie("fname");
+  const header = document.getElementById("headerMessage");
+  const checkboxContainer = document.getElementById("dynamicCheckbox");
 
   if (firstName) {
-    // Update heading and prefill input box
-    heading.textContent = `Welcome back, ${firstName}!`;
-    firstNameInput.value = firstName;
+    header.innerHTML = `<h2>Welcome back, ${firstName}!</h2>`;
+    checkboxContainer.innerHTML = `
+        <label>
+          <input type="checkbox" id="newUserCheckbox" onclick="resetAsNewUser()">
+          Not ${firstName}? Click HERE to start as a NEW USER.
+        </label>
+      `;
+  } else {
+    header.innerHTML = "<h2>Welcome New User!</h2>";
   }
+}
+
+// Handle resetting the user
+function resetAsNewUser() {
+  deleteCookie("fname");
+  document.getElementById("medicalForm").reset();
+  location.reload();
 }
 
 // Function to get a cookie value
 function getCookie(name) {
-  // creates a string that represents the starting part of cookie
-  const cname = name + "=";
-  // decoding cookie
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(";");
-
-  // extract and return the cookie's value
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") c = c.substring(1);
-    if (c.indexOf(cname) === 0) return c.substring(cname.length, c.length);
+  const cookies = document.cookie.split(";");
+  for (let cookie of cookies) {
+    const [key, value] = cookie.split("=").map((s) => s.trim());
+    if (key === name) return decodeURIComponent(value);
   }
-  return "";
+  return null;
 }
+
+// Initialize on page load
+window.onload = displayWelcomeMessage;

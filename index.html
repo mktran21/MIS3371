@@ -33,14 +33,16 @@ Version: 1.0 -->
       document.getElementById('datetime').innerHTML = datetime
     </script>
 
-    <h1 class="welcomeHeading" id="welcomeHeading"> Welcome</h1>
+    <!-- dynamic header -->
+    <div id="headerMessage"></div>
 
     <!--iFrame  -->
     <div class="iFrame">
       <div class="iFrameContents">
-        <iframe src="https://www.w3schools.com" title="calendar" width="100%" height="300"></iframe>
+        <iframe src="/medical_facts.html" title="Medical_Facts" width="100%" height="300"></iframe>
       </div>
     </div>
+
     <!-- form -->
     <div class="outerForm">
       <div class="medicalForm">
@@ -505,6 +507,10 @@ Version: 1.0 -->
               </td>
             </tr>
           </table>
+
+          <!-- dynamic checkbox -->
+          <div id="dynamicCheckbox"></div>
+          
           <!-- validate, review and reset buttons -->
           <div class="buttons">
             <!-- this will be first validate button -->
@@ -529,6 +535,7 @@ Version: 1.0 -->
         </form>
       </div>
     </div>
+
     <script src="./script.js"></script>
     <!-- div to house the output data -->
     <div class="review">
