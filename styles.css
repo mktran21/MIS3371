@@ -1,7 +1,7 @@
 /* Program name: Medical_Form.css
 Author: Maryann Tran
 Date created: 9/9
-Date last edited: The date you submitted it
+Date last edited: 12/2
 Version: 1.0 */
 
 /* body of the page */
@@ -153,6 +153,8 @@ textarea {
   bottom: 0;
   background-color: #1c2f5a;
   font-family: system-ui;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
 }
 
 /* styling the content of the footer header div */
@@ -208,5 +210,12 @@ textarea {
 
 /* iframe css */
 .iFrame {
-  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+.iFrameContent {
+  border: solid;
+  border-color: #1c2f5a;
+  border-width: 10px;
+  border-radius: 20px;
 }

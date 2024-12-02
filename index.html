@@ -12,7 +12,9 @@ Version: 1.0 -->
     <title>BooBoo? Medical</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+
+  <body onload="onPageLoad()">
+
     <!-- banner -->
     <div class="banner">
       <img src="./Transaction_Processing_HW1_Medical_Image.jpg" />
@@ -30,9 +32,14 @@ Version: 1.0 -->
       var datetime = now.toLocaleString()
       document.getElementById('datetime').innerHTML = datetime
     </script>
-    <!--  -->
+
+    <h1 id="welcomeHeading"> Welcome</h1>
+
+    <!--iFrame  -->
     <div class="iFrame">
-      <iframe src="https://www.hcahoustonhealthcare.com/locations/north-cypress/for-visitors" title="Information on our Services"></iframe>
+      <div class="iFrameContents">
+        <iframe src="https://www.who.int/" title="WHO"></iframe>
+      </div>
     </div>
     <!-- form -->
     <div class="outerForm">

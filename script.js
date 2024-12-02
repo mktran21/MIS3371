@@ -6,6 +6,15 @@
 
 //this function checks the entire form and will display submit button if form is valid
 function validateForm() {
+  // save the first name as cookie
+  const firstName = document.getElementById("firstName").value;
+  if (firstName.trim() === "") {
+    alert("Please enter your first name!");
+    return;
+  }
+  setCookie("firstName", firstName, 7);
+  alert("Your name has been saved!");
+
   let form = document.forms["medicalForm"];
   let valid = true;
   let errorMessage = "";
@@ -390,6 +399,7 @@ function inputValidator() {
     'input[name="measles"], input[name="covid"], input[name="smallpox"], input[name="tetanus"], input[name="chickenPox"], input[name="noIllness"]'
   );
   let isChecked = false;
+  const firstName = document.getElementById("firstName").value;
 
   checkboxes.forEach((checkbox) => {
     if (checkbox.checked) {
@@ -502,3 +512,41 @@ document.addEventListener("DOMContentLoaded", function () {
   userHealth.addEventListener("input", updateHealthValue);
   updateHealthValue();
 });
+
+// set the cookie expire time
+function setCookie(name, value, days) {
+  const d = newDate();
+  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to handle page load
+function onPageLoad() {
+  const firstName = getCookie("firstName");
+  const heading = document.getElementById("welcomeHeading");
+  const firstNameInput = document.getElementById("firstName");
+
+  if (firstName) {
+    // Update heading and prefill input box
+    heading.textContent = `Welcome back, ${firstName}!`;
+    firstNameInput.value = firstName;
+  }
+}
+
+// Function to get a cookie value
+function getCookie(name) {
+  // creates a string that represents the starting part of cookie
+  const cname = name + "=";
+  // decoding cookie
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(";");
+
+  // extract and return the cookie's value
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === " ") c = c.substring(1);
+    if (c.indexOf(cname) === 0) return c.substring(cname.length, c.length);
+  }
+  return "";
+}
