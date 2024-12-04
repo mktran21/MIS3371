@@ -6,10 +6,12 @@
 
 //this function checks the entire form and will display submit button if form is valid
 function validateForm() {
+  // get the first name and if the user checked "Remember Me"
   const firstName = document.getElementById("fname").value;
   const rememberMe = document.getElementById("rememberMe")?.checked || false;
+  // if they checked the box, then save cookie with expiry date of 48 hours or 2 days else don't save
   if (rememberMe) {
-    setCookie("fname", firstName, 2); // Cookie expires in 2 days
+    setCookie("fname", firstName, 2);
   } else {
     deleteCookie("fname");
   }
@@ -512,7 +514,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateHealthValue();
 });
 
-// set the cookie expire time = 48 hours
+// set the cookie expire time = 48 hours or 2 days
 function setCookie(name, value, days) {
   const expiry = new Date();
   expiry.setTime(expiry.getTime() + days * 24 * 60 * 60 * 1000); // Calculate expiry in milliseconds
@@ -526,7 +528,7 @@ function deleteCookie(name) {
   document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
 }
 
-// Display welcome message and dynamic checkbox
+// Display dynamic welcome message and dynamic checkbox
 function displayWelcomeMessage() {
   const firstName = getCookie("fname");
   const header = document.getElementById("headerMessage");
