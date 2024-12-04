@@ -1,7 +1,7 @@
 // Program name: Medical_Form.js
 // Author: Maryann Tran
 // Date created: 10/2
-// Date last edited: 11/7
+// Date last edited: 12/4
 // Version: 1.0
 
 //this function checks the entire form and will display submit button if form is valid
